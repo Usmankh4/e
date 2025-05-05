@@ -1,0 +1,21 @@
+# Core Django
+Django>=5.2
+
+# REST API & JWT Auth
+djangorestframework>=3.16.0
+djangorestframework-simplejwt>=5.5.0
+
+# CORS handling
+django-cors-headers>=4.7.0
+
+# Stripe payment integration
+stripe>=12.1.0
+
+# Environment variables support
+python-dotenv>=1.0.0
+
+# ImageField support
+Pillow>=10.0.0
+
+# Authentication system
+django-allauth>=0.57.0

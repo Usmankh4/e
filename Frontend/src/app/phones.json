@@ -1,0 +1,219 @@
+
+[
+
+{
+    "name": "iPhone 15 Pro",
+    "brand": "Apple",
+    "storage": 128,
+    "thumbnail": "https://cdn.discordapp.com/attachments/902785227276050475/1161742223449264179/iPhone15Pro.jpg?ex=653967c2&is=6526f2c2&hm=4888d9e62ab2b6eb0497421dec635b2ca202165adf6946b1435dd425da4c8241&",
+    "color": "Black",
+    "price": 999,
+    "id": 2238,
+    "brandImage": "https://cdn.discordapp.com/attachments/902785227276050475/1170963789345198130/AppleLogo.jpg?ex=655af402&is=65487f02&hm=5e521bbc5e8767af15bb19a1717dc45de567f603ecbbd55fd6e8296345e2da60&"
+        
+
+
+},
+{
+    "name": "iPhone 15 Pro",
+    "brand": "Apple",
+    "storage": 256,
+    "thumbnail": "https://cdn.discordapp.com/attachments/902785227276050475/1161742223449264179/iPhone15Pro.jpg?ex=653967c2&is=6526f2c2&hm=4888d9e62ab2b6eb0497421dec635b2ca202165adf6946b1435dd425da4c8241&",
+    "color": "Blue",
+    "price": 1449,
+    "id": 2238,
+    "brandImage": "https://cdn.discordapp.com/attachments/902785227276050475/1170963789345198130/AppleLogo.jpg?ex=655af402&is=65487f02&hm=5e521bbc5e8767af15bb19a1717dc45de567f603ecbbd55fd6e8296345e2da60&"
+      
+
+
+},
+{
+    "name": "iPhone 15 Pro",
+    "brand": "Apple",
+    "storage": 256,
+    "thumbnail": "https://cdn.discordapp.com/attachments/902785227276050475/1161742223449264179/iPhone15Pro.jpg?ex=653967c2&is=6526f2c2&hm=4888d9e62ab2b6eb0497421dec635b2ca202165adf6946b1435dd425da4c8241&",
+    "color": "red",
+    "price": 1449,
+    "id": 2238,
+    "brandImage": "https://cdn.discordapp.com/attachments/902785227276050475/1170963789345198130/AppleLogo.jpg?ex=655af402&is=65487f02&hm=5e521bbc5e8767af15bb19a1717dc45de567f603ecbbd55fd6e8296345e2da60&"
+        
+
+
+},
+{
+    "name": "iPhone 15 ",
+    "brand": "Apple",
+    "storage": 128,
+    "thumbnail": "https://cdn.discordapp.com/attachments/902785227276050475/1164410525044719718/iPhone15.jpg?ex=65431cce&is=6530a7ce&hm=3e9a9041918d14fc18ad56bcd1142f89659bbd39272e7c988c4db2827a3c93c3&",
+    "color": "black",
+    "price": 1129 ,
+    "id":2237,
+    "brandImage": "https://cdn.discordapp.com/attachments/902785227276050475/1170963789345198130/AppleLogo.jpg?ex=655af402&is=65487f02&hm=5e521bbc5e8767af15bb19a1717dc45de567f603ecbbd55fd6e8296345e2da60&"
+  
+
+
+
+},
+{
+    "name": "iPhone 15 Pro Max ",
+    "brand": "Apple",
+    "storage": 128,
+    "thumbnail": "https://cdn.discordapp.com/attachments/902785227276050475/1164411140860817508/iPhone15ProMax.jpg?ex=65431d61&is=6530a861&hm=1cbbc1e0a5b6e117c57b2092834461a030ee3eab990aae36ec599fca84650a96&",
+    "color": "black",
+    "price": 200,
+    "id": 2236,
+    "brandImage": "https://cdn.discordapp.com/attachments/902785227276050475/1170963789345198130/AppleLogo.jpg?ex=655af402&is=65487f02&hm=5e521bbc5e8767af15bb19a1717dc45de567f603ecbbd55fd6e8296345e2da60&",
+    "colors":[ "Deep Purple", "Silver", "Gold", "Space Black"],
+    "sizes": [128, 256, 512]    
+    
+
+
+
+},
+{
+    "name": "iPhone 15 Plus ",
+    "brand": "Apple",
+    "storage": 128,
+    "thumbnail": "https://cdn.discordapp.com/attachments/902785227276050475/1164411864575381564/iPhone15Plus.jpg?ex=65431e0e&is=6530a90e&hm=0a8d6a8409346d5a76f9fa3a935effffa96cf0624dc50628a3ac0c876c6d7d0f&",
+    "color": "black",
+    "price": 200,
+    "id": 2235,
+    "brandImage": "https://cdn.discordapp.com/attachments/902785227276050475/1170963789345198130/AppleLogo.jpg?ex=655af402&is=65487f02&hm=5e521bbc5e8767af15bb19a1717dc45de567f603ecbbd55fd6e8296345e2da60&",
+    "colors":[ "Deep Purple", "Silver", "Gold", "Space Black"],
+    "sizes": [128, 256, 512]    
+
+
+
+},
+
+{
+    "name": "iPhone 14",
+    "brand": "Apple",
+    "storage": 128,
+    "thumbnail": "https://cdn.discordapp.com/attachments/902785227276050475/1164409611277832264/iPhone_14.jpg?ex=65431bf5&is=6530a6f5&hm=46c336bab02e5a6213c5fccd4b7b08d0e8e10fece1a31e7da3934a842cd81cdf&",
+    "color": "black",
+    "price": 200,
+    "id": 2234,
+    "brandImage": "https://cdn.discordapp.com/attachments/902785227276050475/1170963789345198130/AppleLogo.jpg?ex=655af402&is=65487f02&hm=5e521bbc5e8767af15bb19a1717dc45de567f603ecbbd55fd6e8296345e2da60&",
+    "colors":[ "Deep Purple", "Silver", "Gold", "Space Black"],
+    "sizes": [128, 256, 512]    
+
+
+},
+{
+    "name": "iPhone 14 Pro",
+    "brand": "Apple",
+    "storage": 128,
+    "thumbnail": "https://cdn.discordapp.com/attachments/902785227276050475/1164427190369255494/iPhone14Pro.jpg?ex=65432c54&is=6530b754&hm=3f150af8df637a96495d68a86f8e855854931f87f9180b9acdf757e0ab0b65cc&",
+    "color": "black",
+    "price": 200,
+    "id": 2233,
+    "brandImage": "https://cdn.discordapp.com/attachments/902785227276050475/1170963789345198130/AppleLogo.jpg?ex=655af402&is=65487f02&hm=5e521bbc5e8767af15bb19a1717dc45de567f603ecbbd55fd6e8296345e2da60&",
+    "sizes": [128, 256, 512],
+    "colors":[ "Deep Purple", "Silver", "Gold", "Space Black"]    
+
+
+
+},
+
+
+
+{
+    "name": "Samsung Galaxy Ultra 23",
+    "brand": "Samsung",
+    "storage": 64,
+    "thumbnail": "https://cdn.discordapp.com/attachments/902785227276050475/1165010643854831726/SamsungGalaxyUltra23.jpg?ex=65454bb6&is=6532d6b6&hm=9c5bd448c3345cd9d97efad1d03d5a5fd38885bf18feebec6bf6262f870c08c2&",
+    "color": "black",
+    "price": 100,
+    "id": 2232,
+    "brandImage": "https://cdn.discordapp.com/attachments/902785227276050475/1170965343896879125/SamsungLogo.jpg?ex=655af575&is=65488075&hm=b1f1855b07286fc17fb9e5fc018a6ec752368bf86bf6099a4467824b1bd20af6&",
+    "colors":[ "Deep Purple", "Silver", "Gold", "Space Black"],
+    "sizes": [128, 256, 512]    
+
+
+},
+
+
+
+
+
+
+
+{
+    "name": "Tempered Glass",
+    "brand": "Accessories",
+    "storage": 64,
+    "thumbnail": "https://cdn.discordapp.com/attachments/902785227276050475/1165017451554144326/Glass.jpg?ex=6545520d&is=6532dd0d&hm=e300bd663db65fc823ecae17b525059494b95ff598eea427e6ddb10ea050264d&",
+    "color": "black",
+    "price": 100,
+    "id":14000,
+    "colors":[ "Deep Purple", "Silver", "Gold", "Space Black"],
+        "sizes": [128, 256, 512]    
+    
+
+
+},
+
+
+{
+    "name": "Wall Adapter",
+    "brand": "Accessories",
+    "storage": 64,
+    "thumbnail": "https://cdn.discordapp.com/attachments/902785227276050475/1165006522179403776/SamsungWallAdapter.jpg?ex=654547df&is=6532d2df&hm=88faad7ef59c607928fdb63d369cfbfc48514d30408dc36cc16693b64bce9ef4&",
+    "color": "black",
+    "price": 100,
+    "id":20033,
+    "colors":[ "Deep Purple", "Silver", "Gold", "Space Black"],
+    "sizes": [128, 256, 512]    
+
+},
+
+
+
+{
+    "name": "Fitbit Luxe Fitness Tracker with 24/7 Heart Rate & Sleep",
+    "brand": "Accessories",
+    "storage": 64,
+    "thumbnail": "https://cdn.discordapp.com/attachments/902785227276050475/1165019401876152453/FitBit_Luxe_Fitness.jpg?ex=654553de&is=6532dede&hm=d2a28dd648e633a67145f8f4116eaac33163c1667c0ddfcccfa017cd6d52e358&",
+    "color": "black",
+    "price": 100,
+    "id":1200,
+    "colors":[ "Deep Purple", "Silver", "Gold", "Space Black"],
+    "sizes": [128, 256, 512]    
+
+
+},
+
+
+
+{
+    "name": "Fitbit Luxe Fitness Tracker with 24/7 Heart Rate & Sleep",
+    "brand": "Accessories",
+    "storage": 64,
+    "thumbnail": "https://cdn.discordapp.com/attachments/902785227276050475/1165019401876152453/FitBit_Luxe_Fitness.jpg?ex=654553de&is=6532dede&hm=d2a28dd648e633a67145f8f4116eaac33163c1667c0ddfcccfa017cd6d52e358&",
+    "color": "black",
+    "price": 100,
+    "id":1400,
+    "colors":[ "Deep Purple", "Silver", "Gold", "Space Black"],
+    "sizes": [128, 256, 512]   
+
+    
+},
+{
+"name": "Type C to Lightning Data Cable for Apple (PD Fast Charging) ",
+"brand": "Accessories",
+"storage": 64,
+"thumbnail": "https://cdn.discordapp.com/attachments/902785227276050475/1177116082197241886/USB_Lighting_Cable.jpg?ex=657155c7&is=655ee0c7&hm=17c522d05be7af06c4e1308ced4dc0ccf942c025f69762a96c252234acb2e563&",
+"color": "white",
+"price": 15,
+"id":1400,
+"colors":[ "Deep Purple", "Silver", "Gold", "Space Black"],
+"sizes": [128, 256, 512]  
+
+}
+
+
+
+]
+
+

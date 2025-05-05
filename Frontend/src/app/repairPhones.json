@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Apple",
+        "image": "https://cdn.discordapp.com/attachments/902785227276050475/1170963789345198130/AppleLogo.jpg?ex=655af402&is=65487f02&hm=5e521bbc5e8767af15bb19a1717dc45de567f603ecbbd55fd6e8296345e2da60&"
+        
+    
+    },
+
+    {
+        "name": "Samsung",
+        "image": "https://cdn.discordapp.com/attachments/902785227276050475/1170965343896879125/SamsungLogo.jpg?ex=655af575&is=65488075&hm=b1f1855b07286fc17fb9e5fc018a6ec752368bf86bf6099a4467824b1bd20af6&"
+    },
+    {
+        "name": "LG",
+        "image": "https://cdn.discordapp.com/attachments/902785227276050475/1171168324617510952/LG_Logo.png?ex=655bb27f&is=65493d7f&hm=2f41e83a6985e7f8b4850e7d7b5ea866028a4df7a84f3cdfaa635afceaf9b0bd&"
+    },
+    { "name": "Blackberry",
+     "image":"https://cdn.discordapp.com/attachments/902785227276050475/1171170603345129512/BlackBerry_Logo.jpg?ex=655bb49f&is=65493f9f&hm=94921c017419c452952d2b5945ad58d78366977b960e45087c939352e9b16871&"
+    
+    },
+    { "name": "Sony",
+    
+    "image": "https://cdn.discordapp.com/attachments/902785227276050475/1171169167131545601/Sony_Logo.png?ex=655bb348&is=65493e48&hm=94530f6a3e4459e63a74f8612654f628a93ebb22a8fc21e08a2aa59dc5781c6c&" 
+    
+    },
+
+    { "name": "HTC",
+
+     "image": "https://cdn.discordapp.com/attachments/902785227276050475/1171195247569674384/HTC.png?ex=655bcb92&is=65495692&hm=72fd51075cedfe89e1c18b4770c452e532eeeff40c33a764bfdb3813c71f8ecd&"
+     },
+    
+     { "name": "Motorolla", 
+
+    "image": "/path-to-samsung-image.jpg" 
+
+    },
+    
+    { "name": "OnePlus", 
+    
+    "image": "/path-to-samsung-image.jpg" 
+    
+    },
+    
+    { "name": "Huawei", "image": "/path-to-samsung-image.jpg" 
+
+
+    },
+    { "name": "Google", 
+    
+    "image": "/path-to-samsung-image.jpg"
+
+    },
+    { "name": "Alcatel", 
+    
+    "image": "/path-to-samsung-image.jpg" 
+
+
+    },
+    { "name": "Nokia", "image": "/path-to-samsung-image.jpg" 
+
+    },
+    { "name": "iPad", "image": "/path-to-samsung-image.jpg" 
+    
+
+    },
+    { "name": "Water Damage", "image": "/path-to-samsung-image.jpg" 
+
+
+    }
+    
+    
+]

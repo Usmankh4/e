@@ -1,0 +1,79 @@
+[
+    {
+        "model": "Apple",
+        "name": "iPhone 14",
+        "image": "https://cdn.discordapp.com/attachments/902785227276050475/1164409611277832264/iPhone_14.jpg?ex=65431bf5&is=6530a6f5&hm=46c336bab02e5a6213c5fccd4b7b08d0e8e10fece1a31e7da3934a842cd81cdf&",
+        "Diagnostic Service" : "Free",
+        "Screen Repair" : "$210",
+        "Camera Lens Repair": " $50",
+        "Battery Replacement": "$120",
+        "Back Glass Replacement":"130",
+        "Charge Port Repair": "$130",
+        "Water Damage": "$60"
+    },
+    {
+        "model": "Apple",
+        "name": "iPhone 14 Plus",
+        "Diagnostic Service" : "Free",
+        "Screen Repair" : "$220",
+        "Camera Lens Repair": " $50",
+        "Battery Replacement": "$120",
+        "Back Glass Replacement":"130",
+        "Charge Port Repair": "$130",
+        "Water Damage": "$60"
+    },
+    {
+        "model": "Apple",
+        "name": "iPhone 14 Pro",
+        "Diagnostic Service" : "Free",
+        "Screen Repair" : "$220",
+        "Camera Lens Repair": " $50",
+        "Battery Replacement": "$120",
+        "Back Glass Replacement":"130",
+        "Charge Port Repair": "$130",
+        "Water Damage": "$60"
+    },
+    {
+        "model": "Apple",
+        "name": "iPhone 14 Pro Max",
+        "Diagnostic Service" : "Free",
+        "Screen Repair" : "$220",
+        "Camera Lens Repair": " $50",
+        "Battery Replacement": "$120",
+        "Back Glass Replacement":"130",
+        "Charge Port Repair": "$130",
+        "Water Damage": "$60"
+    },
+    {   "model": "Apple",
+        "name": "iPhone 13 ",
+        "Diagnostic Service" : "Free",
+        "Screen Repair" : "$180",
+        "Camera Lens Repair": " $40",
+        "Battery Replacement": "$80",
+        "Back Glass Replacement":"120",
+        "Charge Port Repair": "$120",
+        "Water Damage": "$60"
+    },
+    {   "model":"Apple",
+        "name": "iPhone 13 Mini ",
+        "Diagnostic Service" : "Free",
+        "Screen Repair" : "$160",
+        "Camera Lens Repair": " $50",
+        "Battery Replacement": "$90",
+        "Back Glass Replacement":"120",
+        "Charge Port Repair": "$120",
+        "Water Damage": "$60"
+
+    },
+    {   "model":"Apple",
+        "name": "iPhone 13 Pro ",
+        "Diagnostic Service" : "Free",
+        "Screen Repair" : "$200",
+        "Camera Lens Repair": " $50",
+        "Battery Replacement": "$120",
+        "Back Glass Replacement":"130",
+        "Charge Port Repair": "$120",
+        "Water Damage": "$60"
+    }
+
+]

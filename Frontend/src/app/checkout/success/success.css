@@ -1,0 +1,155 @@
+.SuccessContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.SuccessHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.SuccessHeader h1 {
+  color: #4CAF50;
+  margin-bottom: 0.5rem;
+}
+
+.OrderSummary, .PurchasedItems, .ShippingDetails {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.OrderSummary h2, .PurchasedItems h2, .ShippingDetails h2 {
+  margin-bottom: 1rem;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.OrderDetails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.OrderInfo {
+  flex: 1;
+  min-width: 250px;
+}
+
+.OrderInfo p {
+  margin-bottom: 0.5rem;
+}
+
+.PurchasedItem {
+  display: flex;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.ItemImage {
+  margin-right: 1.5rem;
+}
+
+.ItemImage img {
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.ItemDetails {
+  flex: 1;
+}
+
+.ItemDetails h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.ItemDetails p {
+  margin-bottom: 0.3rem;
+  color: #555;
+}
+
+.OrderTotal {
+  text-align: right;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.OrderTotal h3 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.ShippingDetails p {
+  margin-bottom: 0.5rem;
+}
+
+.ReceiptActions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.ContinueShoppingButton, .PrintReceiptButton {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ContinueShoppingButton {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.PrintReceiptButton {
+  background-color: #2196F3;
+  color: white;
+}
+
+.ContinueShoppingButton:hover {
+  background-color: #45a049;
+}
+
+.PrintReceiptButton:hover {
+  background-color: #0b7dda;
+}
+
+.LoadingContainer {
+  text-align: center;
+  padding: 3rem;
+}
+
+/* Print styles */
+@media print {
+  .Header, .Footer, .ReceiptActions {
+    display: none;
+  }
+  
+  .SuccessContainer {
+    box-shadow: none;
+    padding: 0;
+  }
+  
+  .SuccessHeader h1 {
+    color: #000;
+  }
+  
+  .OrderSummary, .PurchasedItems, .ShippingDetails {
+    background-color: #fff;
+    padding: 1rem 0;
+  }
+}
