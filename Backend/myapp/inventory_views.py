@@ -5,6 +5,7 @@ from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .models import ProductVariant, InventoryReservation
 import logging
+from django.utils import timezone
 
 logger = logging.getLogger('myapp')
 
@@ -19,8 +20,8 @@ def get_variant_stock(request, variant_id=None):
             variant = get_object_or_404(ProductVariant, id=variant_id)
             return Response({
                 'id': variant.id,
-                'stock': variant.stock,
-                'reserved': variant.reserved,
+                'stock': variant.count_in_stock,
+                'reserved': variant.reserved_stock,
                 'available': variant.available_stock
             })
         else:
@@ -32,8 +33,8 @@ def get_variant_stock(request, variant_id=None):
                 result = {}
                 for variant in variants:
                     result[variant.id] = {
-                        'stock': variant.stock,
-                        'reserved': variant.reserved,
+                        'stock': variant.count_in_stock,
+                        'reserved': variant.reserved_stock,
                         'available': variant.available_stock
                     }
                 return Response(result)
@@ -55,13 +56,13 @@ def update_variant_stock(request):
             return Response({"error": "variant_id and quantity are required"}, status=status.HTTP_400_BAD_REQUEST)
         
         variant = get_object_or_404(ProductVariant, id=variant_id)
-        variant.stock = quantity
+        variant.count_in_stock = quantity
         variant.save()
         
         return Response({
             'id': variant.id,
-            'stock': variant.stock,
-            'reserved': variant.reserved,
+            'stock': variant.count_in_stock,
+            'reserved': variant.reserved_stock,
             'available': variant.available_stock
         })
     except Exception as e:
@@ -108,7 +109,7 @@ def reserve_inventory(request):
             )
             
             # Update variant reserved count
-            variant.reserved += quantity
+            variant.reserved_stock += quantity
             variant.save()
             
             results.append({
@@ -179,8 +180,8 @@ def commit_reservation(request):
         # Commit each reservation
         for reservation in reservations:
             variant = reservation.variant
-            variant.stock -= reservation.quantity
-            variant.reserved -= reservation.quantity
+            variant.count_in_stock -= reservation.quantity
+            variant.reserved_stock -= reservation.quantity
             variant.save()
         
         # Delete the reservations
@@ -232,4 +233,47 @@ def validate_inventory(request):
         })
     except Exception as e:
         logger.error(f"Error validating inventory: {str(e)}")
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def cleanup_expired_reservations(request):
+    """
+    Clean up expired reservations and release reserved inventory
+    This is useful for both development testing and as a scheduled task in production
+    """
+    try:
+        # Find all expired and active reservations
+        expired = InventoryReservation.objects.filter(
+            expires_at__lt=timezone.now(),
+            is_active=True
+        )
+        
+        count = expired.count()
+        if count == 0:
+            return Response({"message": "No expired reservations found"})
+            
+        logger.info(f"Cleaning up {count} expired reservations")
+        
+        # Process each expired reservation
+        for reservation in expired:
+            # Release the reserved stock
+            variant = reservation.variant
+            variant.reserved_stock = max(0, variant.reserved_stock - reservation.quantity)
+            variant.save()
+            
+            # Mark the reservation as inactive
+            reservation.is_active = False
+            reservation.save()
+            
+            logger.info(f"Released expired reservation for variant {variant.id}, quantity {reservation.quantity}")
+            
+        logger.info(f"Successfully cleaned up {count} expired reservations")
+        
+        return Response({
+            "message": f"Successfully cleaned up {count} expired reservations"
+        })
+        
+    except Exception as e:
+        logger.error(f"Error cleaning up expired reservations: {str(e)}")
         return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

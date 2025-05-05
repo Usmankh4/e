@@ -81,7 +81,8 @@ def handle_checkout_completed(session):
             # Update the variant's stock
             variant = reservation.variant
             variant.reserved_stock = max(0, variant.reserved_stock - reservation.quantity)
-            # No need to update count_in_stock as it was already reserved
+            # We DO need to update count_in_stock when the purchase is completed
+            variant.count_in_stock = max(0, variant.count_in_stock - reservation.quantity)
             variant.save()
             
             # Record the inventory change

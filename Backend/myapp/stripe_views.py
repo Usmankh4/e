@@ -125,7 +125,7 @@ def create_checkout_session(request):
                     )
                
                 # Create a reservation
-                expires_at = timezone.now() + timedelta(minutes=15)
+                expires_at = timezone.now() + timedelta(minutes=5)  # 5-minute reservation
                 reservation = InventoryReservation.objects.create(
                     variant=variant,
                     quantity=quantity,
@@ -138,7 +138,10 @@ def create_checkout_session(request):
                 # Update reserved stock
                 variant.reserved_stock += quantity
                 variant.save()
-               
+                
+                # Log the reservation
+                logger.info(f"Created reservation for session {session_id}, variant {variant.id}, quantity {quantity}")
+                
                 # Add to line items
                 if variant.stripe_price_id:
                     line_items.append({
@@ -344,8 +347,10 @@ def create_buy_now_session(request):
         # Create a reservation
         with transaction.atomic():
             session_id = checkout_session.id
-            expires_at = timezone.now() + timedelta(minutes=15)
+            expires_at = timezone.now() + timedelta(minutes=5)  # 5-minute reservation
            
+            # Create a reservation record but don't actually reduce available inventory
+            # This is just to track the intent to purchase
             reservation = InventoryReservation.objects.create(
                 variant=variant,
                 quantity=quantity,
@@ -354,10 +359,14 @@ def create_buy_now_session(request):
                 is_active=True
             )
            
-            # Update reserved stock
+            # Only increase the reserved_stock, don't decrease count_in_stock yet
+            # The actual inventory reduction will happen only after payment confirmation
             variant.reserved_stock += quantity
             variant.save()
-       
+            
+            # Log the reservation
+            logger.info(f"Created reservation for session {session_id}, variant {variant.id}, quantity {quantity}")
+        
         return JsonResponse({
             'id': checkout_session.id,
             'url': checkout_session.url

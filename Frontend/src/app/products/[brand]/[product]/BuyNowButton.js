@@ -48,28 +48,24 @@ export default function BuyNowButton({ productId, defaultPrice, defaultImage }) 
     const currentPrice = parseFloat(priceText);
     
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/create-checkout-session/`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/create-buy-now-session/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          productId: productId,
+          variant_id: productId,
           price: isNaN(currentPrice) ? defaultPrice : currentPrice,
           quantity: quantity,
           image: currentImage
         }),
       });
       
-      const { sessionId } = await response.json();
-      const stripe = await stripePromise;
-      const { error } = await stripe.redirectToCheckout({ sessionId });
-      
-      if (error) {
-        console.error('Error redirecting to Stripe checkout:', error);
-      }
+      const { id, url } = await response.json();
+      // Redirect directly to the Stripe checkout URL
+      window.location.href = url;
     } catch (error) {
-      console.error('Error creating checkout session:', error);
+      console.error('Error creating buy now session:', error);
     }
   };
 

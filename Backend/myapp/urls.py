@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import get_products, get_product_detail, get_product_by_slug, home, get_brands, get_categories, get_phone_brands, get_phone_models, get_repair_services, get_accessories
 from .stripe_views import create_checkout_session, create_buy_now_session, get_session_details
-from .inventory_views import get_variant_stock, update_variant_stock, reserve_inventory, release_reservation, commit_reservation, validate_inventory
+from .inventory_views import get_variant_stock, update_variant_stock, reserve_inventory, release_reservation, commit_reservation, validate_inventory, cleanup_expired_reservations
 from .webhook_views import stripe_webhook
 from .auth_views import (
     MyTokenObtainPairView, RegisterView, UserProfileView,
@@ -38,6 +38,7 @@ urlpatterns = [
     path('api/inventory/release/', release_reservation, name='release_reservation'),
     path('api/inventory/commit/', commit_reservation, name='commit_reservation'),
     path('api/inventory/validate/', validate_inventory, name='validate_inventory'),
+    path('api/inventory/cleanup-expired/', cleanup_expired_reservations, name='cleanup_expired_reservations'),
    
     # Stripe views
     path('api/create-checkout-session/', create_checkout_session, name='create_checkout_session'),
