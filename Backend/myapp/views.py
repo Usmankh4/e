@@ -29,7 +29,9 @@ def home(request):
             "phone_brands": "/myapp/phone-brands/",
             "phone_models": "/myapp/phone-models/<brand_slug>/",
             "repair_services": "/myapp/repair-services/<model_slug>/",
-            "accessories": "/myapp/accessories/"
+            "accessories": "/myapp/accessories/",
+            "accessory_by_slug": "/myapp/accessories/slug/<slug>/",
+            "debug_accessories": "/myapp/debug-accessories/"
         }
     })
 
@@ -209,9 +211,65 @@ def get_accessories(request):
     """
     Get all accessories
     """
+    import logging
+    logger = logging.getLogger(__name__)
+    logger.info("get_accessories endpoint called")
+    
     try:
+        logger.info("Attempting to fetch accessories...")
+        
+        # First, check if the Accessories model has any records
+        count = Accessories.objects.count()
+        logger.info(f"Found {count} accessories in the database")
+        
+        # Get all accessories
         accessories = Accessories.objects.all()
+        
+        # Log the first few accessories for debugging
+        if count > 0:
+            sample = list(accessories[:3])
+            logger.info(f"Sample accessories: {[str(a) for a in sample]}")
+        
+        # Serialize the data
         serializer = AccessoriesSerializer(accessories, many=True)
+        
+        # Log serialized data for debugging
+        serialized_data = serializer.data
+        logger.info(f"Serialized {len(serialized_data)} accessories")
+        
+        # Check for image field issues (common source of serialization errors)
+        for item in serialized_data[:3] if serialized_data else []:
+            if 'image' in item:
+                logger.info(f"Image URL for {item.get('name', 'unknown')}: {item.get('image')}")
+        
+        return Response(serialized_data)
+   
+    except Exception as e:
+        # Log the full error with traceback
+        import traceback
+        error_traceback = traceback.format_exc()
+        logger.error(f"Error in get_accessories: {str(e)}")
+        logger.error(f"Traceback: {error_traceback}")
+        
+        # Return a more detailed error response
+        return Response(
+            {
+                "error": "Failed to fetch accessories",
+                "details": str(e),
+                "type": type(e).__name__
+            },
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_accessory_by_slug(request, slug):
+    """
+    Get detailed information for an accessory by its slug
+    """
+    try:
+        accessory = get_object_or_404(Accessories, slug=slug)
+        serializer = AccessoriesSerializer(accessory)
         return Response(serializer.data)
    
     except Exception as e:
@@ -219,3 +277,75 @@ def get_accessories(request):
             {"error": str(e)},
             status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def debug_accessories(request):
+    """
+    Debug endpoint for accessories
+    """
+    import logging
+    import traceback
+    from django.conf import settings
+    
+    logger = logging.getLogger(__name__)
+    logger.info("debug_accessories endpoint called")
+    
+    response_data = {
+        "debug_info": {},
+        "accessories": []
+    }
+    
+    try:
+        # Check Django settings
+        response_data["debug_info"]["media_url"] = settings.MEDIA_URL
+        response_data["debug_info"]["media_root"] = settings.MEDIA_ROOT
+        response_data["debug_info"]["static_url"] = settings.STATIC_URL
+        
+        # Check if Accessories model exists
+        from django.apps import apps
+        model_exists = apps.is_installed("myapp") and apps.get_model("myapp", "Accessories") is not None
+        response_data["debug_info"]["model_exists"] = model_exists
+        
+        # Count accessories
+        count = Accessories.objects.count()
+        response_data["debug_info"]["count"] = count
+        
+        # Get sample accessories (limit to 3)
+        accessories = Accessories.objects.all()[:3]
+        
+        # Manually serialize to avoid serialization issues
+        for acc in accessories:
+            acc_data = {
+                "id": acc.id,
+                "name": acc.name,
+                "slug": acc.slug,
+                "brand": acc.brand,
+                "description": acc.description,
+                "price": str(acc.price),
+                "count_in_stock": acc.count_in_stock,
+            }
+            
+            # Safely get image URL
+            try:
+                if acc.image and hasattr(acc.image, 'url'):
+                    acc_data["image"] = acc.image.url
+                else:
+                    acc_data["image"] = None
+                    acc_data["image_error"] = "No image or no URL attribute"
+            except Exception as e:
+                acc_data["image"] = None
+                acc_data["image_error"] = str(e)
+            
+            response_data["accessories"].append(acc_data)
+        
+        return Response(response_data)
+    
+    except Exception as e:
+        tb = traceback.format_exc()
+        logger.error(f"Error in debug_accessories: {str(e)}")
+        logger.error(f"Traceback: {tb}")
+        
+        response_data["error"] = str(e)
+        response_data["traceback"] = tb
+        return Response(response_data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

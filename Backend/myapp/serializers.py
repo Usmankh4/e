@@ -9,12 +9,15 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 class ProductVariantSerializer(serializers.ModelSerializer):
     available_stock = serializers.ReadOnlyField()
+    total_available_stock = serializers.ReadOnlyField()
+    has_physical_stock = serializers.ReadOnlyField()
    
     class Meta:
         model = ProductVariant
         fields = [
             'id', 'color', 'color_image', 'storage', 'price',
             'count_in_stock', 'reserved_stock', 'available_stock',
+            'total_available_stock', 'has_physical_stock',
             'sku', 'stripe_price_id', 'max_purchase_quantity'
         ]
         def get_formatted_price(self, obj):
@@ -95,12 +98,24 @@ class RepairServiceSerializer(serializers.ModelSerializer):
         return str(obj.phone_model)
 
 class AccessoriesSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+    
     class Meta:
         model = Accessories
         fields = [
             'id', 'name', 'slug', 'brand', 'description',
             'price', 'count_in_stock', 'image'
         ]
+    
+    def get_image(self, obj):
+        if obj.image:
+            try:
+                return obj.image.url
+            except Exception as e:
+                # Return None if image URL can't be generated
+                print(f"Error getting image URL for {obj.name}: {str(e)}")
+                return None
+        return None
 
 # Cart Serializers
 class CartItemSerializer(serializers.ModelSerializer):

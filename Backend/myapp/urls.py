@@ -1,16 +1,36 @@
 from django.urls import path
-from .views import get_products, get_product_detail, get_product_by_slug, home, get_brands, get_categories, get_phone_brands, get_phone_models, get_repair_services, get_accessories
-from .stripe_views import create_checkout_session, create_buy_now_session, get_session_details
-from .inventory_views import get_variant_stock, update_variant_stock, reserve_inventory, release_reservation, commit_reservation, validate_inventory, cleanup_expired_reservations
-from .webhook_views import stripe_webhook
-from .auth_views import (
-    MyTokenObtainPairView, RegisterView, UserProfileView,
-    logout_view, get_user_data
+from . import views
+from . import stripe_views
+
+# Import views from their respective modules
+from .views import (
+    get_products, get_product_detail, get_product_by_slug, home, 
+    get_brands, get_categories, get_phone_brands, get_phone_models, 
+    get_repair_services, get_accessories, debug_accessories, get_accessory_by_slug
 )
+
+# Import auth views
+from .auth_views import (
+    MyTokenObtainPairView, RegisterView,
+    UserProfileView, logout_view, get_user_data
+)
+
+# Import cart views
 from .cart_views import (
     get_cart, add_to_cart, update_cart_item, remove_from_cart,
     merge_carts, clear_cart, validate_cart
 )
+
+# Import stripe views
+from .stripe_views import create_checkout_session, create_buy_now_session, get_session_details, release_checkout_reservation, debug_inventory_reservation
+
+# Import inventory views
+from .inventory_views import (
+    get_variant_stock, update_variant_stock, reserve_inventory,
+    release_reservation, commit_reservation, validate_inventory,
+    cleanup_expired_reservations
+)
+
 from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
@@ -29,6 +49,8 @@ urlpatterns = [
     path('api/phone-models/<slug:brand_slug>/', get_phone_models, name='get_phone_models'),
     path('api/repair-services/<slug:model_slug>/', get_repair_services, name='get_repair_services'),
     path('api/accessories/', get_accessories, name='get_accessories'),
+    path('api/accessories/<slug:slug>/', get_accessory_by_slug, name='get_accessory_by_slug'),
+    path('api/debug-accessories/', debug_accessories, name='debug_accessories'),
    
     # Inventory views
     path('api/inventory/variant/<int:variant_id>/', get_variant_stock, name='get_variant_stock'),
@@ -44,9 +66,11 @@ urlpatterns = [
     path('api/create-checkout-session/', create_checkout_session, name='create_checkout_session'),
     path('api/create-buy-now-session/', create_buy_now_session, name='create_buy_now_session'),
     path('api/get-session-details/', get_session_details, name='get_session_details'),
+    path('api/release-checkout-reservation/', release_checkout_reservation, name='release_checkout_reservation'),
+    path('api/debug-inventory-reservation/', debug_inventory_reservation, name='debug_inventory_reservation'),
    
     # Webhook views
-    path('webhook/', stripe_webhook, name='stripe_webhook'),
+    path('api/webhook/', stripe_views.stripe_webhook, name='stripe_webhook'),
     
     # Authentication views
     path('api/auth/login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),

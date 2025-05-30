@@ -1,0 +1,258 @@
+/* Accessories Page Styles */
+
+.AccessoriesTitle {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.AccessoriesTitle h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.AccessoriesWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.AccessoriesLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.AccessoriesEmpty {
+  text-align: center;
+  padding: 3rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+/* Accessory Card Styles */
+.AccessoryCard {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.AccessoryCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.AccessoryContent {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.AccessoryCard h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: #333;
+  text-align: center;
+}
+
+.AccessoryImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  height: 200px;
+}
+
+.AccessoryImage img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.AccessoryInfo {
+  margin-top: auto;
+}
+
+.AccessoryBrand {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.AccessoryPrice {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e53935;
+  margin-bottom: 0.5rem;
+}
+
+.InStock {
+  color: #4caf50;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.OutOfStock {
+  color: #f44336;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Accessory Detail Styles */
+.AccessoryDetailContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.AccessoryTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.AccessoryDetailContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .AccessoryDetailContent {
+    grid-template-columns: 1fr;
+  }
+}
+
+.AccessoryDetailImageContainer {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AccessoryDetailImage {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.AccessoryDetailInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.AccessoryBrandDetail,
+.AccessoryPriceDetail,
+.AccessoryStockDetail {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.Label {
+  font-weight: 600;
+  color: #555;
+}
+
+.AccessoryDescription {
+  margin-top: 1.5rem;
+}
+
+.AccessoryDescription h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.AccessoryDescription p {
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Add to Cart Button Styles */
+.AddToCartContainer {
+  margin-top: 2rem;
+}
+
+.QuantitySelector {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.QuantityButton {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.QuantityButton:hover:not(:disabled) {
+  background-color: #e9ecef;
+}
+
+.QuantityButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.QuantityValue {
+  width: 50px;
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 0 0.5rem;
+}
+
+.AddToCartButton {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.AddToCartButton:hover:not(:disabled) {
+  background-color: #43a047;
+}
+
+.AddToCartButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.CartMessage {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  font-weight: 500;
+}

@@ -179,9 +179,18 @@ class ProductVariant(models.Model):
   @property
   def available_stock(self):
       return max(0, self.count_in_stock - self.reserved_stock)
+  
+  @property
+  def total_available_stock(self):
+      return max(0, self.count_in_stock)
+      
   @property
   def is_in_stock(self):
       return self.available_stock > 0
+      
+  @property
+  def has_physical_stock(self):
+      return self.count_in_stock > 0
   def __str__(self):
       return f"{self.product.name} - {self.color}, {self.storage}"
 
@@ -212,8 +221,11 @@ class InventoryReservation(models.Model):
   expires_at = models.DateTimeField()
   is_active = models.BooleanField(default=True)
   created_at = models.DateTimeField(auto_now_add=True)
+  fulfilled_at = models.DateTimeField(null=True, blank=True)
+  canceled_at = models.DateTimeField(null=True, blank=True)
+  
   def __str__(self):
-      return f"{self.variant} - {self.quantity} - {self.session_id}"
+      return f"Reservation for {self.quantity}x {self.variant} (Session: {self.session_id})"
 
 # Phone Repair Service Models
 class PhoneBrand(models.Model):
@@ -359,19 +371,14 @@ class CartItem(models.Model):
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
-  """Create a UserProfile when a new User is created"""
   if created:
       UserProfile.objects.create(user=instance)
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-  """Save the UserProfile when the User is saved"""
   instance.profile.save()
 
 class WebhookEvent(models.Model):
-   """
-   Model to track processed webhook events for idempotency
-   """
    event_id = models.CharField(max_length=255, unique=True)
    event_type = models.CharField(max_length=100)
    data = models.TextField()  # JSON data
@@ -379,6 +386,3 @@ class WebhookEvent(models.Model):
   
    def __str__(self):
        return f"{self.event_type} - {self.event_id}"
-
-
-

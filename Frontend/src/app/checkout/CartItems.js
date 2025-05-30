@@ -87,7 +87,7 @@ export default function CartItems() {
       console.log("With request data:", { 
         items: formattedItems,
         success_url: window.location.origin + '/checkout/success',
-        cancel_url: window.location.origin + '/checkout/cancel'
+        cancel_url: window.location.origin + '/checkout/cancel?session_id={CHECKOUT_SESSION_ID}'
       });
       
       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/create-checkout-session/`, {
@@ -98,7 +98,7 @@ export default function CartItems() {
         body: JSON.stringify({ 
           items: formattedItems,
           success_url: window.location.origin + '/checkout/success',
-          cancel_url: window.location.origin + '/checkout/cancel'
+          cancel_url: window.location.origin + '/checkout/cancel?session_id={CHECKOUT_SESSION_ID}'
         }),
       });
       
@@ -118,6 +118,11 @@ export default function CartItems() {
       // Check if we have a direct URL to redirect to
       if (responseData.url) {
         console.log("Redirecting directly to Stripe URL:", responseData.url);
+        // Store the session ID in localStorage before redirecting
+        if (responseData.id) {
+          console.log("Storing session ID in localStorage:", responseData.id);
+          localStorage.setItem('stripe_checkout_session_id', responseData.id);
+        }
         window.location.href = responseData.url;
         return;
       }

@@ -46,7 +46,7 @@ export default function Home() {
           <div className="cardLayout">
             
             <div className="iPhoneCard">
-              <Link href="/products/Apple">
+              <Link href="/phones/Apple">
               <h2>Apple</h2>
               <button>View All</button>
               <div className="iPhoneImage">
@@ -56,7 +56,7 @@ export default function Home() {
             </div>
 
             <div className="iPhoneCard">
-              <Link href="/products/Samsung">
+              <Link href="/phones/Samsung">
               <h2>Samsung</h2>
               <button>View All</button>
               <div className="iPhoneImage">
@@ -67,7 +67,7 @@ export default function Home() {
             </div>
 
             <div className="iPhoneCard">
-            <Link href="/products/Android">
+            <Link href="/phones/Android">
               <h2>Android</h2>
               <button>View All</button>
               <div className="iPhoneImage">
@@ -92,7 +92,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="bigcard">
-            <Link href="/products/Tablet">
+            <Link href="/phones/Tablet">
 
               <h2>Tablets</h2>
               <button>View All</button>

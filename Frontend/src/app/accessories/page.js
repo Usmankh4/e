@@ -1,52 +1,55 @@
-"use client";
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
-import Link from 'next/link';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
-import '../../app/globals.css';
+import Layout from "../../components/Layout";
+import AccessoryCard from "../../components/AccessoryCard";
+import '../globals.css';
 
-function AccessoriesPage() {
-  const { brand } = useParams();
-  const [accessories, setAccessories] = useState([]);
-
-
-  useEffect(() => {
-    const fetchAccessories = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8000/myapp/api/accessories/`);
-        setAccessories(response.data.results);
-        console.log(response.data.results);
-      } catch (error) {
-        console.error('Error fetching accessories:', error);
-      }
-    };
-    fetchAccessories();
-  }, [brand]);
-
-  return (
-    <div>
-      <Header />
-      <div className="pageAfterHeader">
-        <h2>ACCESSORIES</h2>
-        <div className="PhoneWrapper">
-          {accessories.map((accessory) => (
-            <div className="PhoneCard" key={accessory.id}>
-              <Link href={`/Accessories/${brand}/${accessory.id}`}>
-                
-                  <h4>{accessory.name}</h4>
-                  <img src={accessory.image} alt={accessory.name} style={{ width: 150, height: 200 }} />
-                  <h4>On sale for ${accessory.price}</h4>
-                
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
-      <Footer />
-    </div>
-  );
+// Function to fetch accessories data server-side
+async function getAccessories() {
+  try {
+    const response = await fetch('http://127.0.0.1:8000/myapp/api/accessories/', { 
+      cache: 'no-store'
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch accessories: ${response.status}`);
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching accessories:', error);
+    return [];
+  }
 }
 
-export default AccessoriesPage;
+// Server Component
+export default async function AccessoriesPage() {
+  const accessories = await getAccessories();
+  
+  // Using the AccessoryCard component which exactly matches the ProductCard structure
+
+  return (
+    <Layout>
+      <div className="PhoneTitle">
+        <h2>ACCESSORIES</h2>
+        
+        {accessories && accessories.length > 0 ? (
+          <>
+            <div className="PhoneWrapper">
+              <div className="PhoneLayout">
+                {accessories.map((accessory) => (
+                  <AccessoryCard 
+                    key={accessory.id} 
+                    accessory={accessory}
+                  />
+                ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="error">
+            <p>No accessories found. Please check back later.</p>
+          </div>
+        )}
+      </div>
+    </Layout>
+  );
+}

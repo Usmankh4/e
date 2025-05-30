@@ -1,4 +1,5 @@
 import './globals.css';
+import '../styles/accessories.css';
 import { Inter } from 'next/font/google';
 import { CartProvider } from "../app/cart/CartContext"; 
 

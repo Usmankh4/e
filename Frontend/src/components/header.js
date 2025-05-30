@@ -34,11 +34,11 @@ export default function Header() {
       <div className="headerBottom">
         <ul>
           <li className="link"><a href="/">Home</a></li>
-          <li className="link"><Link href="/products/Apple">Apple</Link></li>
-          <li className="link"><Link href="/products/Samsung">Samsung</Link></li>
-          <li className="link"><Link href="/products/Android">Android</Link></li>
-          <li className="link"><Link href="/products/Tablet">Tablet</Link></li>
-          <li className="link"><Link href="/products/Accessories">Accessories</Link></li>
+          <li className="link"><Link href="/phones/Apple">Apple</Link></li>
+          <li className="link"><Link href="/phones/Samsung">Samsung</Link></li>
+          <li className="link"><Link href="/phones/Android">Android</Link></li>
+          <li className="link"><Link href="/phones/Tablet">Tablet</Link></li>
+          <li className="link"><Link href="/accessories">Accessories</Link></li>
           <li className="link"><Link href="/repair">Repair</Link></li>
           <li className="link"><Link href="/contactus">Contact Us</Link></li>
         </ul>
